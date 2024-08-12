@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AccountServiceImpl implements AccountService {
+public class AccountServiceImplementation implements AccountService {
 
     @Autowired
     private AccountRepository accountRepository;
