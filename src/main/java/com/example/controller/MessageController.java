@@ -25,21 +25,21 @@ public class MessageController {
     @Autowired
     private AccountRepository accountRepository;
 
-    // @PostMapping("/messages")
-    // public ResponseEntity<Message> createMessage(@RequestBody Message message) {
-    //     // Validate message text
-    //     if (message.getMessageText().trim().isEmpty() || message.getMessageText().length() > 254) {
-    //         return ResponseEntity.badRequest().build();
-    //     }
+    @PostMapping("/messages")
+    public ResponseEntity<Message> createMessage(@RequestBody Message message) {
+        // Validate message text
+        if (message.getMessageText().trim().isEmpty() || message.getMessageText().length() > 254) {
+            return ResponseEntity.badRequest().build();
+        }
 
-    //     // TODO: Validate if 'posted_by' user exists in the database. Return 400 if not.
-    //     if (!accountRepository.existsById(message.getPostedBy())) {
-    //         return ResponseEntity.badRequest().build();
-    //     }
+        // TODO: Validate if 'posted_by' user exists in the database. Return 400 if not.
+        if (!accountRepository.existsById(message.getPostedBy())) {
+            return ResponseEntity.badRequest().build();
+        }
 
-    //     Message createdMessage = messageService.createMessage(message);
-    //     return ResponseEntity.ok(createdMessage);
-    // }
+        Message createdMessage = messageService.createMessage(message);
+        return ResponseEntity.ok(createdMessage);
+    }
 
     // @GetMapping("/messages")
     // public ResponseEntity<List<Message>> getAllMessages() {
@@ -59,11 +59,11 @@ public class MessageController {
     //     return ResponseEntity.ok(message);
     // }
 
-    // @DeleteMapping("/messages/{messageId}")
-    // public ResponseEntity<Integer> deleteMessageById(@PathVariable Integer messageId) {
-    //     int rowsDeleted = messageService.deleteMessageById(messageId);
-    //     return ResponseEntity.ok(rowsDeleted);
-    // }
+    @DeleteMapping("/messages/{messageId}")
+    public ResponseEntity<Integer> deleteMessageById(@PathVariable Integer messageId) {
+        int rowsDeleted = messageService.deleteMessageById(messageId);
+        return ResponseEntity.ok(rowsDeleted);
+    }
 
     // @GetMapping("/accounts/{accountId}/messages")
     // public ResponseEntity<List<Message>> getAllMessagesForUser(@PathVariable Integer accountId) {
@@ -75,25 +75,25 @@ public class MessageController {
     //     return ResponseEntity.ok(messages);
     // }
 
-    // @PatchMapping("/messages/{messageId}")
-    // public ResponseEntity<?> updateMessage(@PathVariable Integer messageId, @RequestBody Message messageUpdate) {
-    //     try {
-    //         // Validate the message text
-    //         if (messageUpdate.getMessageText().trim().isEmpty() || messageUpdate.getMessageText().length() > 255) {
-    //             return ResponseEntity.badRequest().body("Message text is either empty or exceeds the allowable limit.");
-    //         }
+    @PatchMapping("/messages/{messageId}")
+    public ResponseEntity<?> updateMessage(@PathVariable Integer messageId, @RequestBody Message messageUpdate) {
+        try {
+            // Validate the message text
+            if (messageUpdate.getMessageText().trim().isEmpty() || messageUpdate.getMessageText().length() > 255) {
+                return ResponseEntity.badRequest().body("Message text is either empty or exceeds the allowable limit.");
+            }
 
-    //         Message updatedMessage = messageService.updateMessage(messageId, messageUpdate);
+            Message updatedMessage = messageService.updateMessage(messageId, messageUpdate);
 
-    //         if (updatedMessage == null) {
-    //             return ResponseEntity.badRequest().body("Message with ID " + messageId + " not found.");
-    //         }
+            if (updatedMessage == null) {
+                return ResponseEntity.badRequest().body("Message with ID " + messageId + " not found.");
+            }
 
-    //         return ResponseEntity.ok(1); // Return 1 to indicate one row modified.
+            return ResponseEntity.ok(1); // Return 1 to indicate one row modified.
 
-    //     } catch (Exception e) {
-    //         return ResponseEntity.badRequest().body(e.getMessage());
-    //     }
-    // }
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 
 }

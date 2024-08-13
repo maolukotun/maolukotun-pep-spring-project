@@ -11,13 +11,13 @@ public interface MessageService {
 
     // Message saveMessage(Message message);
 
-    // Message updateMessage(Integer id, Message message);
+    Message updateMessage(Integer id, Message message);
 
     // void deleteMessage(Integer id);
 
-    // Message createMessage(Message message);
+    Message createMessage(Message message);
 
-    // int deleteMessageById(Integer messageId);
+    int deleteMessageById(Integer messageId);
 
     // List<Message> getAllMessagesForUser(Integer userId);
 

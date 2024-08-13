@@ -30,42 +30,42 @@ public class MessageServiceImplementation implements MessageService {
     //     return messageRepository.save(message);
     // }
 
-    // @Override
-    // public Message updateMessage(Integer id, Message message) {
-    //     // Check if the message exists in the database
-    //     if (messageRepository.existsById(id)) {
+    @Override
+    public Message updateMessage(Integer id, Message message) {
+        // Check if the message exists in the database
+        if (messageRepository.existsById(id)) {
 
-    //         // Check if the message text is empty
-    //         if (message.getMessageText().isEmpty()) {
-    //             throw new IllegalArgumentException("Message text cannot be empty.");
-    //         }
+            // Check if the message text is empty
+            if (message.getMessageText().isEmpty()) {
+                throw new IllegalArgumentException("Message text cannot be empty.");
+            }
 
-    //         // Check if the message text exceeds 255 characters
-    //         if (message.getMessageText().length() > 255) {
-    //             throw new IllegalArgumentException("Message text exceeds the allowable limit.");
-    //         }
+            // Check if the message text exceeds 255 characters
+            if (message.getMessageText().length() > 255) {
+                throw new IllegalArgumentException("Message text exceeds the allowable limit.");
+            }
 
-    //         // If the checks pass, save the message and return
-    //         return messageRepository.save(message);
-    //     }
-    //     return null; // If the message doesn't exist, return null
-    // }
+            // If the checks pass, save the message and return
+            return messageRepository.save(message);
+        }
+        return null; // If the message doesn't exist, return null
+    }
 
     // @Override
     // public void deleteMessage(Integer id) {
     //     messageRepository.deleteById(id);
     // }
 
-    // @Override
-    // public Message createMessage(Message message) {
-    //     // Validation and business logic can be added here
-    //     return messageRepository.save(message);
-    // }
+    @Override
+    public Message createMessage(Message message) {
+        // Validation and business logic can be added here
+        return messageRepository.save(message);
+    }
 
-    // @Override
-    // public int deleteMessageById(Integer messageId) {
-    //     return messageRepository.deleteMessageById(messageId);
-    // }
+    @Override
+    public int deleteMessageById(Integer messageId) {
+        return messageRepository.deleteMessageById(messageId);
+    }
 
     // @Override
     // public List<Message> getAllMessagesForUser(Integer userId) {
