@@ -50,14 +50,14 @@ public class MessageController {
         return ResponseEntity.ok(messages);
     }
 
-    // @GetMapping("/messages/{messageId}")
-    // public ResponseEntity<Message> getMessageById(@PathVariable Integer messageId) {
-    //     Message message = messageService.getMessageById(messageId);
-    //     if (message == null) {
-    //         return ResponseEntity.ok().build(); // Return 200 OK with an empty body.
-    //     }
-    //     return ResponseEntity.ok(message);
-    // }
+    @GetMapping("/messages/{messageId}")
+    public ResponseEntity<Message> getMessageById(@PathVariable Integer messageId) {
+        Message message = messageService.getMessageById(messageId);
+        if (message == null) {
+            return ResponseEntity.ok().build(); // Return 200 OK with an empty body.
+        }
+        return ResponseEntity.ok(message);
+    }
 
     @DeleteMapping("/messages/{messageId}")
     public ResponseEntity<Integer> deleteMessageById(@PathVariable Integer messageId) {

@@ -19,11 +19,11 @@ public class MessageServiceImplementation implements MessageService {
         return messageRepository.findAll();
     }
 
-    // @Override
-    // public Message getMessageById(Integer id) {
-    //     Optional<Message> optionalMessage = messageRepository.findById(id);
-    //     return optionalMessage.orElse(null);
-    // }
+    @Override
+    public Message getMessageById(Integer id) {
+        Optional<Message> optionalMessage = messageRepository.findById(id);
+        return optionalMessage.orElse(null);
+    }
 
     // @Override
     // public Message saveMessage(Message message) {
