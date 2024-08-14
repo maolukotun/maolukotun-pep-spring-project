@@ -41,14 +41,14 @@ public class MessageController {
         return ResponseEntity.ok(createdMessage);
     }
 
-    // @GetMapping("/messages")
-    // public ResponseEntity<List<Message>> getAllMessages() {
-    //     List<Message> messages = messageService.getAllMessages();
-    //     if (messages.isEmpty()) {
-    //         return ResponseEntity.noContent().build();
-    //     }
-    //     return ResponseEntity.ok(messages);
-    // }
+    @GetMapping("/messages")
+    public ResponseEntity<List<Message>> getAllMessages() {
+        List<Message> messages = messageService.getAllMessages();
+        if (messages.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(messages);
+    }
 
     // @GetMapping("/messages/{messageId}")
     // public ResponseEntity<Message> getMessageById(@PathVariable Integer messageId) {

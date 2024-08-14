@@ -5,7 +5,7 @@ import com.example.entity.Message;
 import java.util.List;
 
 public interface MessageService {
-    // List<Message> getAllMessages();
+    List<Message> getAllMessages();
 
     // Message getMessageById(Integer id);
 

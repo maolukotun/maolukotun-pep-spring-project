@@ -14,10 +14,10 @@ public class MessageServiceImplementation implements MessageService {
     @Autowired
     private MessageRepository messageRepository;
 
-    // @Override
-    // public List<Message> getAllMessages() {
-    //     return messageRepository.findAll();
-    // }
+    @Override
+    public List<Message> getAllMessages() {
+        return messageRepository.findAll();
+    }
 
     // @Override
     // public Message getMessageById(Integer id) {
