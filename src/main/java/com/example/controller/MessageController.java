@@ -61,19 +61,24 @@ public class MessageController {
 
     @DeleteMapping("/messages/{messageId}")
     public ResponseEntity<Integer> deleteMessageById(@PathVariable Integer messageId) {
-        int rowsDeleted = messageService.deleteMessageById(messageId);
-        return ResponseEntity.ok(rowsDeleted);
+        Message message = messageService.getMessageById(messageId);
+        if (message != null) {
+            int rowsDeleted = messageService.deleteMessageById(messageId);
+            return ResponseEntity.ok(rowsDeleted);
+        }
+            return null;
+        
     }
 
-    // @GetMapping("/accounts/{accountId}/messages")
-    // public ResponseEntity<List<Message>> getAllMessagesForUser(@PathVariable Integer accountId) {
-    //     List<Message> messages = messageService.getAllMessagesForUser(accountId);
-    //     if (messages.isEmpty()) {
-    //         return ResponseEntity.ok(messages);
-    //     }
+    @GetMapping("/accounts/{accountId}/messages")
+    public ResponseEntity<List<Message>> getAllMessagesForUser(@PathVariable Integer accountId) {
+        List<Message> messages = messageService.getAllMessagesForUser(accountId);
+        if (messages.isEmpty()) {
+            return ResponseEntity.ok(messages);
+        }
 
-    //     return ResponseEntity.ok(messages);
-    // }
+        return ResponseEntity.ok(messages);
+    }
 
     @PatchMapping("/messages/{messageId}")
     public ResponseEntity<?> updateMessage(@PathVariable Integer messageId, @RequestBody Message messageUpdate) {

@@ -57,6 +57,11 @@ public class MessageServiceImplementation implements MessageService {
     // }
 
     @Override
+    public void deleteMessage(Integer id) {
+        messageRepository.deleteById(id);
+    }
+
+    @Override
     public Message createMessage(Message message) {
         // Validation and business logic can be added here
         return messageRepository.save(message);
@@ -67,9 +72,9 @@ public class MessageServiceImplementation implements MessageService {
         return messageRepository.deleteMessageById(messageId);
     }
 
-    // @Override
-    // public List<Message> getAllMessagesForUser(Integer userId) {
-    //     return messageRepository.findAllByPostedBy(userId);
-    // }
+    @Override
+    public List<Message> getAllMessagesForUser(Integer userId) {
+        return messageRepository.findAllPostedBy(userId);
+    }
 
 }

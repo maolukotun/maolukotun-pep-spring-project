@@ -16,9 +16,9 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
     @Query("DELETE FROM Message m WHERE m.id = ?1")
     int deleteMessageById(Integer messageId);
 
-    //Change name
-    //ERROR
-    // @Query("SELECT m FROM Message m WHERE m.posted_by = ?1")
-    // List<Message> findAllPostedBy(Integer postedBy);
+    // Change name
+    // ERROR
+    @Query("SELECT m FROM Message m WHERE m.postedBy = ?1")
+    List<Message> findAllPostedBy(Integer postedBy);
 
 }
