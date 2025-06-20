@@ -1,4 +1,26 @@
 package com.example.service;
 
-public class MessageService {
+import java.util.List;
+
+import com.example.entity.Message;
+
+
+public interface MessageService {
+
+    List<Message> getAllMessages();
+
+    Message getMessageById(Integer id);
+
+    // Message saveMessage(Message message);
+
+    Message updateMessage(Integer id, Message message);
+
+    void deleteMessage(Integer id);
+
+    Message createMessage(Message message);
+
+    int deleteMessageById(Integer messageId);
+
+    List<Message> getAllMessagesForUser(Integer userId);
+
 }
